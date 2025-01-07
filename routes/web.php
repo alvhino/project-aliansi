@@ -18,4 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/kategori-acara', [KategoriAcaraController::class, 'index']);
-
+Route::post('/kategori-acara/add', [KategoriAcaraController::class, 'store']);
+Route::get('/kategori-acara/edit/{kategori_id}', [KategoriAcaraController::class, 'edit']);
+Route::post('/kategori-acara/update/{kategori_id}', [KategoriAcaraController::class, 'update']);
+Route::get('/kategori-acara/delete/{kategori_id}', [KategoriAcaraController::class, 'destroy']);
