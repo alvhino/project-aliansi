@@ -11,7 +11,6 @@ class KategoriAcara extends Model
 
     protected $table = 'kategori_acara';
     protected $primaryKey = 'kategori_id';
-    public $timestamps = true;
 
     protected $fillable = [
         'nama_kategori',

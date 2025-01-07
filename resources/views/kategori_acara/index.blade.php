@@ -1,75 +1,146 @@
 @extends('template.index')
 @section('content')
-<div class="bg-gray-900 text-white min-h-screen p-5">
-    <div class="container mx-auto">
-        <h1 class="text-xl font-bold mb-5">Kategori Acara</h1>
+<div class="container mt-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Kategori Acara</li>
+        </ol>
+    </nav>
 
-        <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-            <div class="p-4 border-b border-gray-700 flex justify-between items-center">
-                <div>
-                    <span>Tampil</span>
-                    <select class="bg-gray-700 text-white rounded px-2 py-1 focus:outline-none">
-                        <option>10</option>
-                        <option>25</option>
-                        <option>50</option>
-                    </select>
-                    <span>entri</span>
-                </div>
-                <div>
-                    <input 
-                        type="text" 
-                        placeholder="Cari" 
-                        class="bg-gray-700 text-white rounded px-4 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h4">Kategori Acara</h1>
+        <!-- Tombol Tambah -->
+        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#tambahModal">
+            <i class="bi bi-plus"></i> Tambah
+        </button>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <form action="{{ url()->current() }}" method="GET" class="d-flex align-items-center gap-2">
+                <span>Tampil</span>
+                <select name="entries" onchange="this.form.submit()" class="form-select form-select-sm w-auto">
+                    <option value="10" {{ request('entries') == 10 ? 'selected' : '' }}>10</option>
+                    <option value="25" {{ request('entries') == 25 ? 'selected' : '' }}>25</option>
+                    <option value="50" {{ request('entries') == 50 ? 'selected' : '' }}>50</option>
+                </select>
+                <span>entri</span>
+            </form>
+            <div>
+            <form action="{{ url()->current() }}" method="GET" class="d-flex align-items-center gap-2">
+    <input type="text" 
+           name="search" 
+           placeholder="Cari..." 
+           value="{{ request('search') }}" 
+           class="form-control form-control-sm w-auto">
+    <input type="hidden" name="entries" value="{{ request('entries', 10) }}">
+    <button type="submit" class="btn btn-sm btn-primary">Cari</button>
+</form>
+
             </div>
+        </div>
 
-            <table class="table-auto w-full text-left text-sm">
-                <thead class="bg-gray-700">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped mb-0" id="kategoriTable">
+                <thead class="table-light">
                     <tr>
-                        <th class="px-4 py-2">No</th>
-                        <th class="px-4 py-2">Nama Kategori</th>
-                        <th class="px-4 py-2">Status</th>
-                        <th class="px-4 py-2">Diperbarui</th>
+                        <th>No</th>
+                        <th>Nama Kategori</th>
+                        <th>Status</th>
+                        <th>Diperbarui</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                        $dummyData = [
-                            ['nama_kategori' => 'Hiburan', 'status' => 'Aktif', 'updated_at' => now()],
-                            ['nama_kategori' => 'Berita dan Informasi', 'status' => 'Aktif', 'updated_at' => now()],
-                            ['nama_kategori' => 'Edukasi', 'status' => 'Nonaktif', 'updated_at' => now()],
-                            ['nama_kategori' => 'Olahraga', 'status' => 'Aktif', 'updated_at' => now()],
-                        ];
-                    @endphp
+                    @forelse ($categories as $index => $kategori)
+                    <tr>
+                        <td>{{ $loop->iteration + ($categories->currentPage() - 1) * $categories->perPage() }}</td>
+                        <td>{{ $kategori->nama_kategori }}</td>
+                        <td>
+                            <span class="badge {{ $kategori->status ? 'bg-success' : 'bg-danger' }}">
+                                {{ $kategori->status ? 'Aktif' : 'Nonaktif' }}
+                            </span>
+                        </td>
+                        <td>{{ \Carbon\Carbon::parse($kategori->updated_at)->format('d M Y') }}</td>
+                        <td>
+    <a href="/kategori-acara/edit/{{ $kategori->kategori_id }}" class="btn btn-sm btn-warning">
+        <i class="fa fa-edit"></i> Edit
+    </a>
+    <a href="/kategori-acara/delete/{{ $kategori->kategori_id }}" 
+       onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" 
+       class="btn btn-sm btn-danger">
+        <i class="fa fa-trash"></i> Hapus
+    </a>
+</td>
 
-                    @foreach ($dummyData as $index => $kategori)
-                    <tr class="border-t border-gray-700">
-                        <td class="px-4 py-2">{{ $index + 1 }}</td>
-                        <td class="px-4 py-2">{{ $kategori['nama_kategori'] }}</td>
-                        <td class="px-4 py-2">{{ $kategori['status'] }}</td>
-                        <td class="px-4 py-2">{{ $kategori['updated_at']->format('d M Y') }}</td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="5" class="text-center">Data tidak ditemukan.</td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
+        </div>
 
-            <div class="p-4 border-t border-gray-700 flex justify-between items-center">
-                <div>
-                    <span>Menampilkan 1 - 4 dari 4 hasil</span>
-                </div>
-                <div>
-                    <!-- Pagination placeholder -->
-                    <nav class="inline-flex">
-                        <button class="bg-gray-700 text-white px-3 py-1 rounded-l">&laquo;</button>
-                        <button class="bg-gray-700 text-white px-3 py-1">1</button>
-                        <button class="bg-gray-700 text-white px-3 py-1">2</button>
-                        <button class="bg-gray-700 text-white px-3 py-1">3</button>
-                        <button class="bg-gray-700 text-white px-3 py-1 rounded-r">&raquo;</button>
-                    </nav>
-                </div>
+        <div class="card-footer d-flex justify-content-between align-items-center">
+            <span>Menampilkan {{ $categories->firstItem() }} - {{ $categories->lastItem() }} dari {{ $categories->total() }} hasil</span>
+            {{ $categories->appends(['entries' => request('entries')])->links('pagination::bootstrap-4') }}
+        </div>
+    </div>
+</div>
+
+<!-- Modal Tambah -->
+<div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tambahModalLabel">Tambah Kategori</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form untuk tambah kategori -->
+                <form id="tambahForm" action="{{ url('kategori-acara/add') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="namaKategori" class="form-label">Nama Kategori</label>
+                        <input type="text" class="form-control" id="namaKategori" name="nama_kategori" placeholder="Masukkan nama kategori" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="statusKategori" class="form-label">Status</label>
+                        <select class="form-select" id="statusKategori" name="status">
+                            <option value="1">Aktif</option>
+                            <option value="0">Nonaktif</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <!-- Tombol untuk submit form -->
+                <button type="submit" class="btn btn-primary" form="tambahForm">Simpan Data</button>
             </div>
         </div>
     </div>
 </div>
+
+<!-- JavaScript -->
+<script>
+    // Pencarian kategori
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        const searchValue = this.value.toLowerCase();
+        const rows = document.querySelectorAll('#kategoriTable tbody tr');
+
+        rows.forEach(row => {
+            const namaKategori = row.children[1].textContent.toLowerCase();
+            if (namaKategori.includes(searchValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>
 @endsection

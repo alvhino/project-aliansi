@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Models\KategoriAcara;
+use App\Models\KategoriAcara;
+
 
 class KategoriAcaraController extends Controller
 {
@@ -12,10 +13,17 @@ class KategoriAcaraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('kategori_acara.index');
+        $entries = $request->get('entries', 10);
+        $search = $request->get('search', '');
+    
+        $categories = KategoriAcara::where('nama_kategori', 'like', "%$search%")
+            ->paginate($entries);
+    
+        return view('kategori_acara.index', compact('categories', 'search'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -35,8 +43,22 @@ class KategoriAcaraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi input
+        $request->validate([
+            'nama_kategori' => 'required|string|max:255',
+            'status' => 'required|boolean',
+        ]);
+        
+        // Menyimpan kategori baru
+        $kategori = new KategoriAcara();
+        $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->status = $request->status;
+        $kategori->save();
+    
+        // Mengalihkan kembali ke halaman index kategori dengan pesan sukses
+        return redirect('kategori-acara');
     }
+    
 
     /**
      * Display the specified resource.
@@ -55,9 +77,11 @@ class KategoriAcaraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($kategori_id)
     {
-        //
+        $kategori = KategoriAcara::findOrFail($kategori_id);
+
+        return view('kategori_acara.edit', compact('kategori'));
     }
 
     /**
@@ -67,9 +91,20 @@ class KategoriAcaraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $kategori_id)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required|string|max:255',
+            'status' => 'required|boolean',
+        ]);
+
+        // Update data kategori
+        $kategori = KategoriAcara::findOrFail($kategori_id);
+        $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->status = $request->status;
+        $kategori->save();
+
+        return redirect('kategori-acara')->with('success', 'Kategori berhasil diperbarui.');
     }
 
     /**
@@ -78,8 +113,11 @@ class KategoriAcaraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kategori_id)
     {
-        //
+        $kategori = KategoriAcara::findOrFail($kategori_id);
+        $kategori->delete();
+
+        return redirect('kategori-acara')->with('success', 'Kategori berhasil dihapus.');
     }
 }
