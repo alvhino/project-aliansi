@@ -18,3 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/kategori-acara', [KategoriAcaraController::class, 'index']);
+
+
+//pengguna
+Route::resource('users', UserController::class);
