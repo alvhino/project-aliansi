@@ -2,43 +2,41 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    protected $table = 'user';
+    protected $primaryKey = 'user_id';
+    public $timestamps = true;
+
     protected $fillable = [
-        'name',
+        'nama',
         'email',
-        'password',
+        'username',
+        'foto_profil',
+        'status',
+        'role_id',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    // Relasi ke tabel `role`
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'role_id');
+    }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // Relasi ke tabel `feedback`
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'user_id', 'user_id');
+    }
+
+    // Relasi ke tabel `cart`
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'user_id', 'user_id');
+    }
 }
