@@ -271,17 +271,82 @@
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
 
-    <ul class="sidebar-nav" id="sidebar-nav">
+<!-- Dashboard -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/dashboard') }}">
+    <i class="bi bi-grid"></i>
+    <span>Dashboard</span>
+  </a>
+</li><!-- End Dashboard Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link " href="index.html">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
+<!-- Niko: Tabel Kategori Acara -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/kategori') }}">
+    <i class="bi bi-list"></i>
+    <span>Kategori Acara</span>
+  </a>
+</li>
 
-    </ul>
+<!-- Ello: Umpan Balik -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/umpan-balik') }}">
+    <i class="bi bi-chat-left-text"></i>
+    <span>Umpan Balik</span>
+  </a>
+</li>
+
+<!-- Gian: Hak Akses -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/hak-akses') }}">
+    <i class="bi bi-key"></i>
+    <span>Hak Akses</span>
+  </a>
+</li>
+
+<!-- Alvin: Wilayah Stasiun -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/wilayah-stasiun') }}">
+    <i class="bi bi-geo-alt"></i>
+    <span>Wilayah Stasiun</span>
+  </a>
+</li>
+
+<!-- Axell: List Kerja Sama -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/list-kerjasama') }}">
+    <i class="bi bi-briefcase"></i>
+    <span>List Kerja Sama</span>
+  </a>
+</li>
+
+<!-- Praya: Riwayat -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/riwayat') }}">
+    <i class="bi bi-clock-history"></i>
+    <span>Riwayat</span>
+  </a>
+</li>
+
+<!-- Pian: Pengguna -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/pengguna') }}">
+    <i class="bi bi-person"></i>
+    <span>Pengguna</span>
+  </a>
+</li>
+
+<!-- Aksa: Approval Kerja Sama -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/approval-kerjasama') }}">
+    <i class="bi bi-check-circle"></i>
+    <span>Approval Kerja Sama</span>
+  </a>
+</li>
+
+</ul>
+
 
   </aside><!-- End Sidebar-->
 
