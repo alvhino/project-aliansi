@@ -283,7 +283,7 @@
 
 <!-- Niko: Tabel Kategori Acara -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('/kategori') }}">
+  <a class="nav-link" href="{{ url('/kategori-acara') }}">
     <i class="bi bi-list"></i>
     <span>Kategori Acara</span>
   </a>
