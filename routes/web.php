@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/kategori-acara', [KategoriAcaraController::class, 'index']);
+

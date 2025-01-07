@@ -1,6 +1,6 @@
 @extends('template.index')
 @section('content')
-<div class="bg-gray-900 text-white min-h-screen p-5">
+<div class="bg-gray-900 text-black min-h-screen p-5">
     <div class="container mx-auto">
         <h1 class="text-xl font-bold mb-5">Kategori Acara</h1>
 
@@ -8,7 +8,7 @@
             <div class="p-4 border-b border-gray-700 flex justify-between items-center">
                 <div>
                     <span>Tampil</span>
-                    <select class="bg-gray-700 text-white rounded px-2 py-1 focus:outline-none">
+                    <select class="bg-gray-700 text-black rounded px-2 py-1 focus:outline-none">
                         <option>10</option>
                         <option>25</option>
                         <option>50</option>
@@ -19,7 +19,7 @@
                     <input 
                         type="text" 
                         placeholder="Cari" 
-                        class="bg-gray-700 text-white rounded px-4 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        class="bg-gray-700 text-black rounded px-4 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </div>
             </div>
@@ -61,11 +61,11 @@
                 <div>
                     <!-- Pagination placeholder -->
                     <nav class="inline-flex">
-                        <button class="bg-gray-700 text-white px-3 py-1 rounded-l">&laquo;</button>
-                        <button class="bg-gray-700 text-white px-3 py-1">1</button>
-                        <button class="bg-gray-700 text-white px-3 py-1">2</button>
-                        <button class="bg-gray-700 text-white px-3 py-1">3</button>
-                        <button class="bg-gray-700 text-white px-3 py-1 rounded-r">&raquo;</button>
+                        <button class="bg-gray-700 text-black px-3 py-1 rounded-l">&laquo;</button>
+                        <button class="bg-gray-700 text-black px-3 py-1">1</button>
+                        <button class="bg-gray-700 text-black px-3 py-1">2</button>
+                        <button class="bg-gray-700 text-black px-3 py-1">3</button>
+                        <button class="bg-gray-700 text-black px-3 py-1 rounded-r">&raquo;</button>
                     </nav>
                 </div>
             </div>
