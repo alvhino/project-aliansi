@@ -10,6 +10,11 @@ use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ApprovalKerjaSamaController;
 
+Route::get('/', function () {
+    return view('template.index');
+});
+
+
 // Routes untuk Kategori Acara
 Route::get('/kategori-acara', [KategoriAcaraController::class, 'index']);
 Route::post('/kategori-acara/add', [KategoriAcaraController::class, 'store']);
