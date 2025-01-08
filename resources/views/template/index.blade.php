@@ -292,7 +292,7 @@
 
 <!-- Ello: Umpan Balik -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('/umpan-balik') }}">
+  <a class="nav-link" href="{{ url('/feedback') }}">
     <i class="bi bi-chat-left-text"></i>
     <span>Umpan Balik</span>
   </a>

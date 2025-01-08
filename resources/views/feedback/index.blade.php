@@ -11,10 +11,6 @@
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h4">Umpan Balik</h1>
-        <!-- Tombol Tambah -->
-        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#tambahModal">
-            <i class="bi bi-plus"></i> Tambah
-        </button>
     </div>
 
     <div class="card shadow-sm">
@@ -28,22 +24,15 @@
                 </select>
                 <span>entri</span>
             </form>
-            <div>
             <form action="{{ url()->current() }}" method="GET" class="d-flex align-items-center gap-2">
-    <input type="text" 
-           name="search" 
-           placeholder="Cari..." 
-           value="{{ request('search') }}" 
-           class="form-control form-control-sm w-auto">
-    <input type="hidden" name="entries" value="{{ request('entries', 10) }}">
-    <button type="submit" class="btn btn-sm btn-primary">Cari</button>
-</form>
-
-            </div>
+                <input type="text" name="search" placeholder="Cari..." value="{{ request('search') }}" class="form-control form-control-sm">
+                <input type="hidden" name="entries" value="{{ request('entries', 10) }}">
+                <button type="submit" class="btn btn-sm btn-primary">Cari</button>
+            </form>
         </div>
 
         <div class="table-responsive">
-            <table class="table table-bordered table-striped mb-0" id="feedbackTable">
+            <table class="table table-bordered table-striped mb-0">
                 <thead class="table-light">
                     <tr>
                         <th>No</th>
@@ -57,31 +46,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($categories as $index => $feedback)
+                    @forelse ($feedback as $index => $item)
                     <tr>
-                        <td>{{ $loop->iteration + ($categories->currentPage() - 1) * $categories->perPage() }}</td>
-                        <td>{{ $feedback->nama_feedback}}</td>
+                        <td>{{ $loop->iteration + ($feedback->currentPage() - 1) * $feedback->perPage() }}</td>
+                        <td>{{ $item->nama_pengirim }}</td>
+                        <td>{{ $item->judul_respon }}</td>
                         <td>
-                            <span class="badge {{ $feedback->status ? 'bg-success' : 'bg-danger' }}">
-                                {{ $feedback->status ? 'Aktif' : 'Nonaktif' }}
+                            <span class="badge {{ $item->status == 'Selesai' ? 'bg-success' : ($item->status == 'Ditolak' ? 'bg-danger' : 'bg-warning') }}">
+                                {{ $item->status }}
                             </span>
                         </td>
-                        <td>{{ \Carbon\Carbon::parse($feedback->updated_at)->format('d M Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</td>
                         <td>
-    <a href="/feedback-acara/edit/{{ $feedback->feedback }}" class="btn btn-sm btn-warning">
-        <i class="fa fa-edit"></i> Edit
-    </a>
-    <a href="/feedback-acara/delete/{{ $feedback->feedback_id }}" 
-       onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" 
-       class="btn btn-sm btn-danger">
-        <i class="fa fa-trash"></i> Hapus
-    </a>
-</td>
-
+                            <a href="{{ url('feedback/edit/' . $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{{ url('feedback/delete/' . $item->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" class="btn btn-sm btn-danger">Hapus</a>
+                        </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5" class="text-center">Data tidak ditemukan.</td>
+                        <td colspan="8" class="text-center">Data tidak ditemukan.</td>
                     </tr>
                     @endforelse
                 </tbody>
@@ -89,8 +72,8 @@
         </div>
 
         <div class="card-footer d-flex justify-content-between align-items-center">
-            <span>Menampilkan {{ $categories->firstItem() }} - {{ $categories->lastItem() }} dari {{ $categories->total() }} hasil</span>
-            {{ $categories->appends(['entries' => request('entries')])->links('pagination::bootstrap-4') }}
+            <span>Menampilkan {{ $feedback->firstItem() }} - {{ $feedback->lastItem() }} dari {{ $feedback->total() }} hasil</span>
+            {{ $feedback->appends(request()->all())->links('pagination::bootstrap-4') }}
         </div>
     </div>
 </div>
@@ -104,46 +87,31 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Form untuk tambah feedback -->
-                <form id="tambahForm" action="{{ url('feedback-acara/add') }}" method="POST">
+                <form id="tambahForm" action="{{ url('feedback/add') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="namaFeedback" class="form-label">Umpan Balik</label>
-                        <input type="text" class="form-control" id="namaFeedback" name="nama_feedback" placeholder="Masukkan nama feedback" required>
+                        <label for="namaPengirim" class="form-label">Nama Pengirim</label>
+                        <input type="text" class="form-control" id="namaPengirim" name="nama_pengirim" placeholder="Masukkan nama pengirim" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="judulRespon" class="form-label">Judul Respon</label>
+                        <input type="text" class="form-control" id="judulRespon" name="judul_respon" placeholder="Masukkan judul respon" required>
                     </div>
                     <div class="mb-3">
                         <label for="statusFeedback" class="form-label">Status</label>
                         <select class="form-select" id="statusFeedback" name="status">
-                            <option value="1">Aktif</option>
-                            <option value="0">Nonaktif</option>
+                            <option value="Selesai">Selesai</option>
+                            <option value="Ditolak">Ditolak</option>
+                            <option value="Dibatalkan">Dibatalkan</option>
                         </select>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <!-- Tombol untuk submit form -->
                 <button type="submit" class="btn btn-primary" form="tambahForm">Simpan Data</button>
             </div>
         </div>
     </div>
 </div>
-
-<!-- JavaScript -->
-<script>
-    // Pencarian feedback
-    document.getElementById('searchInput').addEventListener('keyup', function() {
-        const searchValue = this.value.toLowerCase();
-        const rows = document.querySelectorAll('#feedbackTable tbody tr');
-
-        rows.forEach(row => {
-            const namaFeedback = row.children[1].textContent.toLowerCase();
-            if (namaFeedback.includes(searchValue)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    });
-</script>
 @endsection
