@@ -5,12 +5,12 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Kategori Acara</li>
+            <li class="breadcrumb-item active" aria-current="page">Umpan Balik</li>
         </ol>
     </nav>
 
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="h4">Kategori Acara</h1>
+        <h1 class="h4">Umpan Balik</h1>
         <!-- Tombol Tambah -->
         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#tambahModal">
             <i class="bi bi-plus"></i> Tambah
@@ -43,32 +43,35 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-bordered table-striped mb-0" id="kategoriTable">
+            <table class="table table-bordered table-striped mb-0" id="feedbackTable">
                 <thead class="table-light">
                     <tr>
                         <th>No</th>
-                        <th>Nama Kategori</th>
+                        <th>Nama Pengirim</th>
+                        <th>Judul Respon</th>
+                        <th>Respon Mitra</th>
+                        <th>Respon Anda</th>
                         <th>Status</th>
-                        <th>Diperbarui</th>
-                        <th>Action</th>
+                        <th>Dibuat</th>
+                        <th>Respon</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($categories as $index => $kategori)
+                    @forelse ($categories as $index => $feedback)
                     <tr>
                         <td>{{ $loop->iteration + ($categories->currentPage() - 1) * $categories->perPage() }}</td>
-                        <td>{{ $kategori->nama_kategori }}</td>
+                        <td>{{ $feedback->nama_feedback}}</td>
                         <td>
-                            <span class="badge {{ $kategori->status ? 'bg-success' : 'bg-danger' }}">
-                                {{ $kategori->status ? 'Aktif' : 'Nonaktif' }}
+                            <span class="badge {{ $feedback->status ? 'bg-success' : 'bg-danger' }}">
+                                {{ $feedback->status ? 'Aktif' : 'Nonaktif' }}
                             </span>
                         </td>
-                        <td>{{ \Carbon\Carbon::parse($kategori->updated_at)->format('d M Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($feedback->updated_at)->format('d M Y') }}</td>
                         <td>
-    <a href="/kategori-acara/edit/{{ $kategori->kategori_id }}" class="btn btn-sm btn-warning">
+    <a href="/feedback-acara/edit/{{ $feedback->feedback }}" class="btn btn-sm btn-warning">
         <i class="fa fa-edit"></i> Edit
     </a>
-    <a href="/kategori-acara/delete/{{ $kategori->kategori_id }}" 
+    <a href="/feedback-acara/delete/{{ $feedback->feedback_id }}" 
        onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" 
        class="btn btn-sm btn-danger">
         <i class="fa fa-trash"></i> Hapus
@@ -97,20 +100,20 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tambahModalLabel">Tambah Kategori</h5>
+                <h5 class="modal-title" id="tambahModalLabel">Tambah Umpan Balik</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Form untuk tambah kategori -->
-                <form id="tambahForm" action="{{ url('kategori-acara/add') }}" method="POST">
+                <!-- Form untuk tambah feedback -->
+                <form id="tambahForm" action="{{ url('feedback-acara/add') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="namaKategori" class="form-label">Nama Kategori</label>
-                        <input type="text" class="form-control" id="namaKategori" name="nama_kategori" placeholder="Masukkan nama kategori" required>
+                        <label for="namaFeedback" class="form-label">Umpan Balik</label>
+                        <input type="text" class="form-control" id="namaFeedback" name="nama_feedback" placeholder="Masukkan nama feedback" required>
                     </div>
                     <div class="mb-3">
-                        <label for="statusKategori" class="form-label">Status</label>
-                        <select class="form-select" id="statusKategori" name="status">
+                        <label for="statusFeedback" class="form-label">Status</label>
+                        <select class="form-select" id="statusFeedback" name="status">
                             <option value="1">Aktif</option>
                             <option value="0">Nonaktif</option>
                         </select>
@@ -128,14 +131,14 @@
 
 <!-- JavaScript -->
 <script>
-    // Pencarian kategori
+    // Pencarian feedback
     document.getElementById('searchInput').addEventListener('keyup', function() {
         const searchValue = this.value.toLowerCase();
-        const rows = document.querySelectorAll('#kategoriTable tbody tr');
+        const rows = document.querySelectorAll('#feedbackTable tbody tr');
 
         rows.forEach(row => {
-            const namaKategori = row.children[1].textContent.toLowerCase();
-            if (namaKategori.includes(searchValue)) {
+            const namaFeedback = row.children[1].textContent.toLowerCase();
+            if (namaFeedback.includes(searchValue)) {
                 row.style.display = '';
             } else {
                 row.style.display = 'none';
