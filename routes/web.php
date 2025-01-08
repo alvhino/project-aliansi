@@ -29,13 +29,6 @@ Route::get('/feedback/edit/{feedback_id}', [FeedbackController::class, 'edit']);
 Route::post('/feedback/update/{feedback_id}', [FeedbackController::class, 'update']);
 Route::get('/feedback/delete/{feedback_id}', [FeedbackController::class, 'destroy']);
 
-// Routes untuk Umpan Balik
-Route::get('/umpan-balik', [UmpanBalikController::class, 'index']);
-Route::post('/umpan-balik/add', [UmpanBalikController::class, 'store']);
-Route::get('/umpan-balik/edit/{umpan_balik_id}', [UmpanBalikController::class, 'edit']);
-Route::post('/umpan-balik/update/{umpan_balik_id}', [UmpanBalikController::class, 'update']);
-Route::get('/umpan-balik/delete/{umpan_balik_id}', [UmpanBalikController::class, 'destroy']);
-
 // Routes untuk Hak Akses
 Route::get('/hak-akses', [HakAksesController::class, 'index']);
 Route::post('/hak-akses/add', [HakAksesController::class, 'store']);
