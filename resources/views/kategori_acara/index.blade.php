@@ -134,7 +134,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editForm" action="{{ url('kategori-acara/edit') }}" method="POST">
+                <form id="editForm" action="{{ url('/kategori-acara/update/$kategori->kategori_id') }}" method="POST">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="kategori_id" id="editKategoriId">
