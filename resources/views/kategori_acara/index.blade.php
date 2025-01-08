@@ -70,11 +70,14 @@
                                     data-status="{{ $kategori->status }}">
                                 <i class="fa fa-edit"></i> Edit
                             </button>
-                            <a href="/kategori-acara/delete/{{ $kategori->kategori_id }}" 
-                               onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" 
-                               class="btn btn-sm btn-danger">
-                                <i class="fa fa-trash"></i> Hapus
-                            </a>
+                            <form action="{{ url('kategori-acara/delete', $kategori->kategori_id) }}" method="POST" class="d-inline">
+                                @csrf
+                                <button type="submit" 
+                                        onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" 
+                                        class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i> Hapus
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     @empty
@@ -134,10 +137,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editForm" action="{{ url('/kategori-acara/update/$kategori->kategori_id') }}" method="POST">
+                <form id="editForm" action="" method="POST">
                     @csrf
-                    @method('PUT')
-                    <input type="hidden" name="kategori_id" id="editKategoriId">
+                    <input type="hidden" name="id" id="editKategoriId">
                     <div class="mb-3">
                         <label for="editNamaKategori" class="form-label">Nama Kategori</label>
                         <input type="text" class="form-control" id="editNamaKategori" name="nama_kategori" required>
@@ -167,6 +169,7 @@
         const nama = button.getAttribute('data-nama');
         const status = button.getAttribute('data-status');
 
+        document.getElementById('editForm').action = `/kategori-acara/update/${id}`;
         document.getElementById('editKategoriId').value = id;
         document.getElementById('editNamaKategori').value = nama;
         document.getElementById('editStatusKategori').value = status;
