@@ -294,15 +294,15 @@
 <li class="nav-item">
   <a class="nav-link" href="{{ url('/feedback') }}">
     <i class="bi bi-chat-left-text"></i>
-    <span>Umpan Balik</span>
+    <span>Feedback</span>
   </a>
 </li>
 
-<!-- Gian: Hak Akses -->
+<!-- Gian: Role -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('/hak-akses') }}">
+  <a class="nav-link" href="{{ url('/role') }}">
     <i class="bi bi-key"></i>
-    <span>Hak Akses</span>
+    <span>Role</span>
   </a>
 </li>
 
@@ -332,9 +332,9 @@
 
 <!-- Pian: Pengguna -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('/pengguna') }}">
+  <a class="nav-link" href="{{ url('/user') }}">
     <i class="bi bi-person"></i>
-    <span>Pengguna</span>
+    <span>User</span>
   </a>
 </li>
 

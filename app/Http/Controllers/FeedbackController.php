@@ -15,3 +15,4 @@ class FeedbackController extends Controller
         return view('feedback.index', compact('feedback'));
     }
 }
+

@@ -2,11 +2,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriAcaraController;
 use App\Http\Controllers\FeedbackController;
+<<<<<<< HEAD
 use App\Http\Controllers\HakAksesController;
+=======
+use App\Http\Controllers\UmpanBalikController;
+use App\Http\Controllers\RoleController;
+>>>>>>> 7794353bbae01c89d7c990e84474d3c8a275072e
 use App\Http\Controllers\WilayahStasiunController;
 use App\Http\Controllers\ListKerjaSamaController;
 use App\Http\Controllers\RiwayatController;
-use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApprovalKerjaSamaController;
 
 Route::get('/', function () {
@@ -29,11 +34,11 @@ Route::post('/feedback/update/{feedback_id}', [FeedbackController::class, 'updat
 Route::get('/feedback/delete/{feedback_id}', [FeedbackController::class, 'destroy']);
 
 // Routes untuk Hak Akses
-Route::get('/hak-akses', [HakAksesController::class, 'index']);
-Route::post('/hak-akses/add', [HakAksesController::class, 'store']);
-Route::get('/hak-akses/edit/{hak_akses_id}', [HakAksesController::class, 'edit']);
-Route::post('/hak-akses/update/{hak_akses_id}', [HakAksesController::class, 'update']);
-Route::get('/hak-akses/delete/{hak_akses_id}', [HakAksesController::class, 'destroy']);
+Route::get('/role', [RoleController::class, 'index']);
+Route::post('/role/add', [RoleController::class, 'store']);
+Route::get('/role/edit/{role_id}', [RoleController::class, 'edit']);
+Route::post('/role/update/{role_id}', [RoleController::class, 'update']);
+Route::get('/role/delete/{role_id}', [RoleController::class, 'destroy']);
 
 // Routes untuk Wilayah Stasiun
 Route::get('/wilayah', [WilayahController::class, 'index']);
@@ -63,11 +68,11 @@ Route::post('/riwayat/update/{riwayat_id}', [RiwayatController::class, 'update']
 Route::get('/riwayat/delete/{riwayat_id}', [RiwayatController::class, 'destroy']);
 
 // Routes untuk Pengguna
-Route::get('/pengguna', [PenggunaController::class, 'index']);
-Route::post('/pengguna/add', [PenggunaController::class, 'store']);
-Route::get('/pengguna/edit/{pengguna_id}', [PenggunaController::class, 'edit']);
-Route::post('/pengguna/update/{pengguna_id}', [PenggunaController::class, 'update']);
-Route::get('/pengguna/delete/{pengguna_id}', [PenggunaController::class, 'destroy']);
+Route::get('/user', [UserController::class, 'index']);
+Route::post('/user/add', [UserController::class, 'store']);
+Route::get('/user/edit/{user_id}', [UserController::class, 'edit']);
+Route::post('/user/update/{user_id}', [UserController::class, 'update']);
+Route::get('/user/delete/{user_id}', [UserController::class, 'destroy']);
 
 // Routes untuk Approval Kerja Sama
 Route::get('/approval-kerja-sama', [ApprovalKerjaSamaController::class, 'index']);
