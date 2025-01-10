@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('telepon');
             $table->string('foto_profile');
             $table->foreignId('role_id');
-            $table->string('status');
+            $table->varchar('status');
             $table->timestamps();
         });
     }
