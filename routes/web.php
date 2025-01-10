@@ -2,12 +2,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriAcaraController;
 use App\Http\Controllers\FeedbackController;
-<<<<<<< HEAD
-use App\Http\Controllers\HakAksesController;
-=======
 use App\Http\Controllers\UmpanBalikController;
 use App\Http\Controllers\RoleController;
->>>>>>> 7794353bbae01c89d7c990e84474d3c8a275072e
 use App\Http\Controllers\WilayahStasiunController;
 use App\Http\Controllers\ListKerjaSamaController;
 use App\Http\Controllers\RiwayatController;
