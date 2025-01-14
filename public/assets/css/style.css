@@ -1231,3 +1231,38 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+/*--------------------------------------------------------------
+# Profile admin
+--------------------------------------------------------------*/
+.profile-dropdown {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 300px; /* Adjust as needed */
+  z-index: 1050;
+}
+
+.nav-profile {
+  width: 100%;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  text-align: center;
+}
+
+.nav-profile img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nav-profile span {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dropdown-menu.profile {
+  width: 100%;
+  bottom: 50px; /* Adjust if needed */
+}
