@@ -1,0 +1,87 @@
+body {
+    background-color: #ffffff; /* Warna latar belakang lembut */
+    font-family: 'Arial', sans-serif;
+}
+
+.list-group-item {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: #ffffff; /* Warna putih saat hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan */
+    transform: translateY(-2px); /* Efek mengangkat */
+}
+
+.breadcrumb {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Dropdown Button */
+.btn-custom-dropdown {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    color: #000;
+    cursor: pointer;
+}
+
+.btn-custom-dropdown .dropdown-arrow {
+    display: inline-block;
+    margin-left: 8px;
+    border: solid #0B8F51;
+    border-width: 0 2px 2px 0;
+    padding: 4px;
+    transform: rotate(45deg);
+}
+
+/* Dropdown Menu */
+.dropdown-custom-menu {
+    background-color: #ffffff;
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
+    padding: 20px;
+    min-width: 350px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid Container */
+.region-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* Region Items */
+.region-item {
+    background-color: #f9f9f9;
+    border: 1px solid #e3e3e3;
+    text-align: center;
+    padding: 12px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #343a40;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.region-item:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #0B8F51;
+}
+
+

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KerjaSamaDaerahController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriAcaraController;
 use App\Http\Controllers\FeedbackController;
@@ -80,3 +81,11 @@ Route::post('/approval-kerja-sama/add', [ApprovalKerjaSamaController::class, 'st
 Route::get('/approval-kerja-sama/edit/{approval_id}', [ApprovalKerjaSamaController::class, 'edit']);
 Route::post('/approval-kerja-sama/update/{approval_id}', [ApprovalKerjaSamaController::class, 'update']);
 Route::get('/approval-kerja-sama/delete/{approval_id}', [ApprovalKerjaSamaController::class, 'destroy']);
+
+// Kerjasama Daerah
+Route::get('/kerja-sama-daerah', [KerjaSamaDaerahController::class, 'index']);
+Route::post('/kerja-sama-daerah/add', [KerjaSamaDaerahController::class, 'store']);
+Route::get('/kerja-sama-daerah/edit/{daerah_id}', [KerjaSamaDaerahController::class, 'edit']);
+Route::post('/kerja-sama-daerah/update/{daerah_id}', [KerjaSamaDaerahController::class, 'update']);
+Route::get('/kerja-sama-daerah/delete/{daerah_id}', [KerjaSamaDaerahController::class, 'destroy']);
+

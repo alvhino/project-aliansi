@@ -340,9 +340,17 @@
 
 <!-- Aksa: Approval Kerja Sama -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('/approval-kerjasama') }}">
+  <a class="nav-link" href="{{ url('/approval-kerja-sama') }}">
     <i class="bi bi-check-circle"></i>
     <span>Approval Kerja Sama</span>
+  </a>
+</li>
+
+<!-- Aksa: Kerja Sama Daerah -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/kerja-sama-daerah') }}">
+    <i class="bi bi-check-circle"></i>
+    <span>Kerjasama Daerah</span>
   </a>
 </li>
 
