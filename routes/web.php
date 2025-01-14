@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriAcaraController;
+use App\Http\Controllers\WilayahController;
+use App\Http\Controllers\StasiunController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\UmpanBalikController;
 use App\Http\Controllers\HakAksesController;
@@ -32,6 +34,13 @@ Route::get('/kategori-acara/edit/{kategori_id}', [KategoriAcaraController::class
 Route::post('/kategori-acara/update/{kategori_id}', [KategoriAcaraController::class, 'update']);
 Route::get('/kategori-acara/delete/{kategori_id}', [KategoriAcaraController::class, 'destroy']);
 
+// wilyah
+Route::get('/wilayah', [WilayahController::class, 'index']);
+Route::post('/wilayah/add', [WilayahController::class, 'store']);
+Route::get('/wilayah/edit/{wilayah_id}', [WilayahController::class, 'edit']);
+Route::post('/wilayah/update/{wilayah_id}', [WilayahController::class, 'update']);
+Route::get('/wilayah/delete/{wilayah_id}', [WilayahController::class, 'destroy']);
+
 // Feedback
 Route::get('/feedback', [FeedbackController::class, 'index']);
 Route::post('/feedback/add', [FeedbackController::class, 'store']);
@@ -45,13 +54,6 @@ Route::post('/hak-akses/add', [HakAksesController::class, 'store']);
 Route::get('/hak-akses/edit/{hak_akses_id}', [HakAksesController::class, 'edit']);
 Route::post('/hak-akses/update/{hak_akses_id}', [HakAksesController::class, 'update']);
 Route::get('/hak-akses/delete/{hak_akses_id}', [HakAksesController::class, 'destroy']);
-
-// Wilayah Stasiun
-Route::get('/wilayah-stasiun', [WilayahStasiunController::class, 'index']);
-Route::post('/wilayah-stasiun/add', [WilayahStasiunController::class, 'store']);
-Route::get('/wilayah-stasiun/edit/{stasiun_id}', [WilayahStasiunController::class, 'edit']);
-Route::post('/wilayah-stasiun/update/{stasiun_id}', [WilayahStasiunController::class, 'update']);
-Route::get('/wilayah-stasiun/delete/{stasiun_id}', [WilayahStasiunController::class, 'destroy']);
 
 // List Kerja Sama
 Route::get('/list-kerja-sama', [ListKerjaSamaController::class, 'index']);
@@ -80,3 +82,6 @@ Route::post('/approval-kerja-sama/add', [ApprovalKerjaSamaController::class, 'st
 Route::get('/approval-kerja-sama/edit/{approval_id}', [ApprovalKerjaSamaController::class, 'edit']);
 Route::post('/approval-kerja-sama/update/{approval_id}', [ApprovalKerjaSamaController::class, 'update']);
 Route::get('/approval-kerja-sama/delete/{approval_id}', [ApprovalKerjaSamaController::class, 'destroy']);
+
+
+
