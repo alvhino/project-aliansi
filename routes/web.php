@@ -2,12 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriAcaraController;
 use App\Http\Controllers\FeedbackController;
-<<<<<<< HEAD
-use App\Http\Controllers\HakAksesController;
-=======
-use App\Http\Controllers\UmpanBalikController;
 use App\Http\Controllers\RoleController;
->>>>>>> 7794353bbae01c89d7c990e84474d3c8a275072e
 use App\Http\Controllers\WilayahStasiunController;
 use App\Http\Controllers\ListKerjaSamaController;
 use App\Http\Controllers\RiwayatController;
@@ -79,4 +74,4 @@ Route::get('/approval-kerja-sama', [ApprovalKerjaSamaController::class, 'index']
 Route::post('/approval-kerja-sama/add', [ApprovalKerjaSamaController::class, 'store']);
 Route::get('/approval-kerja-sama/edit/{approval_kerja_sama_id}', [ApprovalKerjaSamaController::class, 'edit']);
 Route::post('/approval-kerja-sama/update/{approval_kerja_sama_id}', [ApprovalKerjaSamaController::class, 'update']);
-Route::get('/approval-kerja-sama/delete/{approval_kerja_sama_id}', [ApprovalKerjaSamaController::class, 'destroy']);
+Route::get('/approval-kerja-sama/delete/{approval_kerja_sama_id}', [ApprovalKerjaSamaController::class, 'destroy']);
