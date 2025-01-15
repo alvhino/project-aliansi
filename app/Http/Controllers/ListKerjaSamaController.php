@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kerjasama;
 
+
 class ListKerjaSamaController extends Controller
 {
+<<<<<<< HEAD
     public function index()
     {
         $kerjasama = [
@@ -23,3 +25,8 @@ class ListKerjaSamaController extends Controller
         return view('list_kerjasama.index', compact('kerjasama'));
     }
 }
+=======
+
+    
+}
+>>>>>>> 4f61ef77fe9c4425c137246efc7d0c931ff3d82c

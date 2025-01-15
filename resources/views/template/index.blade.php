@@ -256,15 +256,17 @@
 
 <!-- Alvin: Wilayah Stasiun -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('/wilayah-stasiun') }}">
+  <a class="nav-link" href="{{ url('/wilayah') }}">
     <i class="bi bi-geo-alt"></i>
     <span>Wilayah Stasiun</span>
   </a>
 </li>
 
+
+
 <!-- Axell: List Kerja Sama -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('/list-kerjasama') }}">
+  <a class="nav-link" href="{{ url('/list-kerja-sama') }}">
     <i class="bi bi-briefcase"></i>
     <span>List Kerja Sama</span>
   </a>
@@ -288,9 +290,17 @@
 
 <!-- Aksa: Approval Kerja Sama -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('/approval-kerjasama') }}">
+  <a class="nav-link" href="{{ url('/approval-kerja-sama') }}">
     <i class="bi bi-check-circle"></i>
     <span>Approval Kerja Sama</span>
+  </a>
+</li>
+
+<!-- Aksa: Kerja Sama Daerah -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/kerja-sama-daerah') }}">
+    <i class="bi bi-check-circle"></i>
+    <span>Kerjasama Daerah</span>
   </a>
 </li>
 
