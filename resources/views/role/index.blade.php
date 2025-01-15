@@ -171,7 +171,7 @@
         const level = button.getAttribute('data-level');
         const deskripsi = button.getAttribute('data-deskripsi');
 
-        document.getElementById('editForm').action = `/role/update/${id}`;
+        document.getElementById('editForm').action = /role/update/${id};
         document.getElementById('editRoleId').value = id;
         document.getElementById('editNamaRole').value = nama;
         document.getElementById('editLevelRole').value = level;

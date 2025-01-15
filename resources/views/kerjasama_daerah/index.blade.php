@@ -78,12 +78,47 @@
     </div>
 </div>
 
-
+<!-- Modal Tambah -->
+<div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tambahModalLabel">Tambah Umpan Balik</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="tambahForm" action="{{ url('feedback/add') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="namaPengirim" class="form-label">Nama Pengirim</label>
+                        <input type="text" class="form-control" id="namaPengirim" name="nama_pengirim" placeholder="Masukkan nama pengirim" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="judulRespon" class="form-label">Judul Respon</label>
+                        <input type="text" class="form-control" id="judulRespon" name="judul_respon" placeholder="Masukkan judul respon" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="statusFeedback" class="form-label">Status</label>
+                        <select class="form-select" id="statusFeedback" name="status">
+                            <option value="Selesai">Selesai</option>
+                            <option value="Ditolak">Ditolak</option>
+                            <option value="Dibatalkan">Dibatalkan</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary" form="tambahForm">Simpan Data</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
                         </td>
                     </tr>
-                   
+                    @empty
                     <tr>
 
                         <td colspan="8" class="text-center">Data tidak ditemukan.</td>
@@ -91,7 +126,7 @@
                         <td colspan="6" class="text-center">Data tidak ditemukan.</td>
 
                     </tr>
-                 
+                    @endforelse
                 </tbody>
             </table>
         </div>
@@ -101,8 +136,8 @@
             <span>Menampilkan {{ $feedback->firstItem() }} - {{ $feedback->lastItem() }} dari {{ $feedback->total() }} hasil</span>
             {{ $feedback->appends(request()->all())->links('pagination::bootstrap-4') }}
 
-            <span>Menampilkan {{ $feedback->firstItem() }} - {{ $feedback->lastItem() }} dari {{ $feedback->total() }} hasil</span>
-            {{ $feedback->appends(['entries' => request('entries')])->links('pagination::bootstrap-4') }}
+            <span>Menampilkan {{ $umpanBalik->firstItem() }} - {{ $umpanBalik->lastItem() }} dari {{ $umpanBalik->total() }} hasil</span>
+            {{ $umpanBalik->appends(['entries' => request('entries')])->links('pagination::bootstrap-4') }}
 
         </div>
     </div>
@@ -208,3 +243,4 @@
         </div>
     </div>
 </div>
+@endsection

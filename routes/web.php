@@ -9,6 +9,7 @@ use App\Http\Controllers\ListKerjaSamaController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApprovalKerjaSamaController;
+use App\Http\Controllers\WilayahController;
 
 Route::get('/', function () {
     return view('template.index');

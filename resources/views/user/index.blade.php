@@ -264,7 +264,7 @@
 
             // Update form action dengan ID pengguna
             if (editForm) {
-                editForm.action = `/user/update/${userId}`;
+                editForm.action = /user/update/${userId};
             }
         });
 
