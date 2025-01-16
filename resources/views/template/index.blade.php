@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>TVRI</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ url('assets/img/favicon.png') }}" rel="icon">
-<link href="{{ url('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+  <link href="{{ url('assets/img/2.png') }}" rel="icon">
+<link href="{{ url('assets/img/2.png') }}" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
 <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -29,14 +29,6 @@
 <!-- Template Main CSS File -->
 <link href="{{ url('assets/css/style.css') }}" rel="stylesheet">
 
-
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Updated: Apr 20 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -46,8 +38,8 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">NiceAdmin</span>
+        <img src="assets/img/2.png" alt="">
+        <span class="d-none d-lg-block"></span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -209,61 +201,17 @@
 
         </li><!-- End Messages Nav -->
 
-        <li class="nav-item dropdown pe-3">
+        <!-- Profile Dropdown -->
+<li class="nav-item dropdown profile-dropdown pe-3">
 
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-          </a><!-- End Profile Iamge Icon -->
+<a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+  <img src="assets/img/2.png" alt="Profile" class="rounded-circle">
+  <span class="d-none d-md-block dropdown-toggle ps-2">username</span>
+</a><!-- End Profile Image Icon -->
+</ul><!-- End Profile Dropdown Items -->
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+</li><!-- End Profile Nav -->
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
 
       </ul>
     </nav><!-- End Icons Navigation -->
@@ -308,15 +256,17 @@
 
 <!-- Alvin: Wilayah Stasiun -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('/wilayah-stasiun') }}">
+  <a class="nav-link" href="{{ url('/wilayah') }}">
     <i class="bi bi-geo-alt"></i>
     <span>Wilayah Stasiun</span>
   </a>
 </li>
 
+
+
 <!-- Axell: List Kerja Sama -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('/list-kerjasama') }}">
+  <a class="nav-link" href="{{ url('/list-kerja-sama') }}">
     <i class="bi bi-briefcase"></i>
     <span>List Kerja Sama</span>
   </a>
@@ -340,9 +290,25 @@
 
 <!-- Aksa: Approval Kerja Sama -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('/approval-kerjasama') }}">
+  <a class="nav-link" href="{{ url('/approval-kerja-sama') }}">
     <i class="bi bi-check-circle"></i>
     <span>Approval Kerja Sama</span>
+  </a>
+</li>
+
+<!-- Aksa: Kerja Sama Daerah -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/kerja-sama-daerah') }}">
+    <i class="bi bi-check-circle"></i>
+    <span>Kerjasama Daerah</span>
+  </a>
+</li>
+
+<!-- Ello Voldigoad: Kerja Sama Nasional -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/kerjasama-nasional') }}">
+    <i class="bi bi-check-circle"></i>
+    <span>Kerjasama Nasional</span>
   </a>
 </li>
 
@@ -360,14 +326,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      &copy; Copyright <strong><span>TVRI</span></strong>. All Rights Reserved
     </div>
   </footer><!-- End Footer -->
 

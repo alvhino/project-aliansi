@@ -2,12 +2,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriAcaraController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\UmpanBalikController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\WilayahStasiunController;
 use App\Http\Controllers\ListKerjaSamaController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApprovalKerjaSamaController;
+use App\Http\Controllers\WilayahController;
+use App\Http\Controllers\StasiunController;
+use App\Http\Controllers\KerjaSamaDaerahController;
+use App\Http\Controllers\KerjasamaNasionalController;
+
 
 Route::get('/', function () {
     return view('template.index');
@@ -74,4 +80,10 @@ Route::get('/approval-kerja-sama', [ApprovalKerjaSamaController::class, 'index']
 Route::post('/approval-kerja-sama/add', [ApprovalKerjaSamaController::class, 'store']);
 Route::get('/approval-kerja-sama/edit/{approval_kerja_sama_id}', [ApprovalKerjaSamaController::class, 'edit']);
 Route::post('/approval-kerja-sama/update/{approval_kerja_sama_id}', [ApprovalKerjaSamaController::class, 'update']);
-Route::get('/approval-kerja-sama/delete/{approval_kerja_sama_id}', [ApprovalKerjaSamaController::class, 'destroy']);
+Route::get('/approval-kerja-sama/delete/{approval_kerja_sama_id}', [ApprovalKerjaSamaController::class, 'destroy']);
+
+// Routes untuk Kerjasama Nasional
+Route::get('/kerjasama-nasional', [KerjasamaNasionalController::class, 'index']);
+Route::post('/kerjasama-nasional/add', [KerjasamaNasionalController::class, 'store']);
+Route::post('/kerjasama-nasional/update/{id}', [KerjasamaNasionalController::class, 'update']);
+Route::post('/kerjasama-nasional/delete/{id}', [KerjasamaNasionalController::class, 'destroy']);

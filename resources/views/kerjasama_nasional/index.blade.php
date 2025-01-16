@@ -5,15 +5,15 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Manajemen Role</li>
+            <li class="breadcrumb-item active" aria-current="page">Kerjasama Nasional</li>
         </ol>
     </nav>
 
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="h4">Manajemen Role</h1>
+        <h1 class="h4">Kerjasama Nasional</h1>
         <!-- Tombol Tambah -->
         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#tambahModal">
-            <i class="bi bi-plus"></i> Tambah Role
+            <i class="bi bi-plus"></i> Tambah
         </button>
     </div>
 
@@ -40,39 +40,43 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-bordered table-striped mb-0" id="roleTable">
+            <table class="table table-bordered table-striped mb-0" id="kerjasamaNasionalTable">
                 <thead class="table-light">
                     <tr>
                         <th>No</th>
-                        <th>Nama Role</th>
-                        <th>Level</th>
+                        <th>Nama Kerjasama</th>
                         <th>Deskripsi</th>
+                        <th>Ikon Kerjasama</th>
+                        <th>Status</th>
                         <th>Diperbarui</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($roles as $index => $role)
+                    @forelse ($kerjasamaNasional as $index => $kerjasama)
                     <tr>
-                        <td>{{ $loop->iteration + ($roles->currentPage() - 1) * $roles->perPage() }}</td>
-                        <td>{{ $role->nama_role }}</td>
-                        <td>{{ $role->level }}</td>
-                        <td>{{ $role->deskripsi }}</td>
-                        <td>{{ \Carbon\Carbon::parse($role->updated_at)->format('d M Y') }}</td>
+                        <td>{{ $loop->iteration + ($kerjasamaNasional->currentPage() - 1) * $kerjasamaNasional->perPage() }}</td>
+                        <td>{{ $kerjasama->nama_kerjasama }}</td>
+                        <td>{{ $kerjasama->deskripsi }}</td>
+                        <td>
+                            <span class="badge {{ $kerjasama->status ? 'bg-success' : 'bg-danger' }}">
+                                {{ $kerjasama->status ? 'Aktif' : 'Nonaktif' }}
+                            </span>
+                        </td>
+                        <td>{{ \Carbon\Carbon::parse($kerjasama->updated_at)->format('d M Y') }}</td>
                         <td>
                             <button class="btn btn-sm btn-warning" 
                                     data-bs-toggle="modal" 
                                     data-bs-target="#editModal"
-                                    data-id="{{ $role->role_id }}"
-                                    data-nama="{{ $role->nama_role }}"
-                                    data-level="{{ $role->level }}"
-                                    data-deskripsi="{{ $role->deskripsi }}">
+                                    data-id="{{ $kerjasama->kerjasama_id }}"
+                                    data-nama="{{ $kerjasama->nama_kerjasama }}"
+                                    data-deskripsi="{{ $kerjasama->deskripsi }}"
+                                    data-status="{{ $kerjasama->status }}">
                                 <i class="fa fa-edit"></i> Edit
                             </button>
-                            <form action="{{ url('role/delete', $role->role_id) }}" method="get" class="d-inline">
+                            <form action="{{ url('kerjasama-nasional/delete', $kerjasama->kerjasama_id) }}" method="POST" class="d-inline">
                                 @csrf
                                 <button type="submit" 
-                                        onclick="return confirm('Apakah Anda yakin ingin menghapus role ini?')" 
+                                        onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" 
                                         class="btn btn-sm btn-danger">
                                     <i class="fa fa-trash"></i> Hapus
                                 </button>
@@ -89,8 +93,8 @@
         </div>
 
         <div class="card-footer d-flex justify-content-between align-items-center">
-            <span>Menampilkan {{ $roles->firstItem() }} - {{ $roles->lastItem() }} dari {{ $roles->total() }} hasil</span>
-            {{ $roles->appends(['entries' => request('entries')])->links('pagination::bootstrap-4') }}
+            <span>Menampilkan {{ $kerjasamaNasional->firstItem() }} - {{ $kerjasamaNasional->lastItem() }} dari {{ $kerjasamaNasional->total() }} hasil</span>
+            {{ $kerjasamaNasional->appends(['entries' => request('entries')])->links('pagination::bootstrap-4') }}
         </div>
     </div>
 </div>
@@ -100,23 +104,26 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tambahModalLabel">Tambah Role</h5>
+                <h5 class="modal-title" id="tambahModalLabel">Tambah Kerjasama</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="tambahForm" action="{{ url('role/add') }}" method="POST">
+                <form id="tambahForm" action="{{ url('kerjasama-nasional/add') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="namaRole" class="form-label">Nama Role</label>
-                        <input type="text" class="form-control" id="namaRole" name="nama_role" placeholder="Masukkan nama role" required>
+                        <label for="namaKerjasama" class="form-label">Nama Kerjasama</label>
+                        <input type="text" class="form-control" id="namaKerjasama" name="nama_kerjasama" placeholder="Masukkan nama kerjasama" required>
                     </div>
                     <div class="mb-3">
-                        <label for="levelRole" class="form-label">Level</label>
-                        <input type="number" class="form-control" id="levelRole" name="level" placeholder="Masukkan level role" required>
+                        <label for="deskripsiKerjasama" class="form-label">Deskripsi</label>
+                        <textarea class="form-control" id="deskripsiKerjasama" name="deskripsi" rows="3" placeholder="Masukkan deskripsi kerjasama" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsiRole" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" id="deskripsiRole" name="deskripsi" rows="3" placeholder="Deskripsi role"></textarea>
+                        <label for="statusKerjasama" class="form-label">Status</label>
+                        <select class="form-select" id="statusKerjasama" name="status">
+                            <option value="1">Aktif</option>
+                            <option value="0">Nonaktif</option>
+                        </select>
                     </div>
                 </form>
             </div>
@@ -133,49 +140,29 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Edit Role</h5>
+                <h5 class="modal-title" id="editModalLabel">Edit Kerjasama</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="editForm" action="" method="POST">
                     @csrf
-                    <input type="hidden" name="id" id="editRoleId">
+                    <input type="hidden" name="id" id="editKerjasamaId">
                     <div class="mb-3">
-                        <label for="editNamaRole" class="form-label">Nama Role</label>
-                        <input type="text" class="form-control" id="editNamaRole" name="nama_role" required>
+                        <label for="editNamaKerjasama" class="form-label">Nama Kerjasama</label>
+                        <input type="text" class="form-control" id="editNamaKerjasama" name="nama_kerjasama" required>
                     </div>
                     <div class="mb-3">
-                        <label for="editLevelRole" class="form-label">Level</label>
-                        <input type="number" class="form-control" id="editLevelRole" name="level" required>
+                        <label for="editDeskripsiKerjasama" class="form-label">Deskripsi</label>
+                        <textarea class="form-control" id="editDeskripsiKerjasama" name="deskripsi" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="editDeskripsiRole" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" id="editDeskripsiRole" name="deskripsi" rows="3"></textarea>
+                        <label for="editStatusKerjasama" class="form-label">Status</label>
+                        <select class="form-select" id="editStatusKerjasama" name="status">
+                            <option value="1">Aktif</option>
+                            <option value="0">Nonaktif</option>
+                        </select>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary" form="editForm">Simpan Perubahan</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    const editModal = document.getElementById('editModal');
-    editModal.addEventListener('show.bs.modal', function(event) {
-        const button = event.relatedTarget;
-        const id = button.getAttribute('data-id');
-        const nama = button.getAttribute('data-nama');
-        const level = button.getAttribute('data-level');
-        const deskripsi = button.getAttribute('data-deskripsi');
-
-        document.getElementById('editForm').action = /role/update/${id};
-        document.getElementById('editRoleId').value = id;
-        document.getElementById('editNamaRole').value = nama;
-        document.getElementById('editLevelRole').value = level;
-        document.getElementById('editDeskripsiRole').value = deskripsi;
-    });
-</script>
-@endsection
+@endsection    
+    
