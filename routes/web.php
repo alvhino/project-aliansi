@@ -55,11 +55,11 @@ Route::post('/stasiun/update/{stasiun_id}', [StasiunController::class, 'update']
 Route::get('/stasiun/delete/{stasiun_id}', [StasiunController::class, 'destroy']);
 
 // Routes untuk List Kerja Sama
-Route::get('/list-kerja-sama', [ListKerjaSamaController::class, 'index']);
-Route::post('/list-kerja-sama/add', [ListKerjaSamaController::class, 'store']);
-Route::get('/list-kerja-sama/edit/{list_kerja_sama_id}', [ListKerjaSamaController::class, 'edit']);
-Route::post('/list-kerja-sama/update/{list_kerja_sama_id}', [ListKerjaSamaController::class, 'update']);
-Route::get('/list-kerja-sama/delete/{list_kerja_sama_id}', [ListKerjaSamaController::class, 'destroy']);
+Route::get('/list-kerjasama', [ListKerjaSamaController::class, 'index']);
+Route::post('/list-kerjasama/add', [ListKerjaSamaController::class, 'store']);
+Route::get('/list-kerjasama/edit/{list_kerja_sama_id}', [ListKerjaSamaController::class, 'edit']);
+Route::post('/list-kerjasama/update/{list_kerja_sama_id}', [ListKerjaSamaController::class, 'update']);
+Route::get('/list-kerjasama/delete/{list_kerja_sama_id}', [ListKerjaSamaController::class, 'destroy']);
 
 // Routes untuk Riwayat
 Route::get('/riwayat', [RiwayatController::class, 'index']);

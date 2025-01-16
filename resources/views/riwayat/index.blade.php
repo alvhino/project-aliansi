@@ -72,9 +72,9 @@
                     <th>No</th>
                     <th>No Tiket Kerjasama</th>
                     <th>Nama Pemesan</th>
+                    <th>Nama Progam Acara</th>
                     <th>Stasiun TV</th>
                     <th>Kerjasama</th>
-                    <th>Pola Acara</th>
                     <th>Durasi</th>
                     <th>Dipesan</th>
                     <th>Berakhir</th>
@@ -88,67 +88,116 @@
             <td>1</td>
             <td>TXR-20241212-001</td>
             <td>Budi Hadi</td>
-            <td>TVRI Aceh</td>
-            <td>Siaran</td>
-            <td>ILM</td>
+            <td>Talkshow Sore Hari</td>
+            <td>TVRI Nasional</td>
+            <td>PSA</td>
             <td>Reguler 5 Detik</td>
-            <td>17.10.15</td>
-            <td>12 Des 2024</td>
+            <td>
+                <div style="text-align: center;">
+                    <span style="display: block;">17.10.15</span>
+                    <span style="display: block;">12 Des 2024</span>
+                </div>
+            </td>
+            <td>
+                <div style="text-align: center;">
+                    <span style="display: block;">17.10.15</span>
+                    <span style="display: block;">12 Des 2024</span>
+                </div>
+            </td>
             <td>Selesai</td>
         </tr>
         <tr>
             <td>2</td>
             <td>TXR-20241212-001</td>
             <td>Budi Hadi</td>
-            <td>TVRI Aceh</td>
-            <td>Siaran</td>
-            <td>ILM</td>
+            <td>Talkshow Sore Hari</td>
+            <td>TVRI Nasional</td>
+            <td>PSA</td>
             <td>Reguler 5 Detik</td>
-            <td>17.10.15</td>
-            <td>12 Des 2024</td>
+            <td>
+                <div style="text-align: center;">
+                    <span style="display: block;">17.10.15</span>
+                    <span style="display: block;">12 Des 2024</span>
+                </div>
+            </td>
+            <td>
+                <div style="text-align: center;">
+                    <span style="display: block;">17.10.15</span>
+                    <span style="display: block;">12 Des 2024</span>
+                </div>
+            </td>
             <td>Selesai</td>
         </tr>
         <tr>
             <td>3</td>
             <td>TXR-20241212-001</td>
             <td>Budi Hadi</td>
-            <td>TVRI Aceh</td>
-            <td>Siaran</td>
-            <td>ILM</td>
+            <td>Talkshow Sore Hari</td>
+            <td>TVRI Nasional</td>
+            <td>PSA</td>
             <td>Reguler 5 Detik</td>
-            <td>17.10.15</td>
-            <td>12 Des 2024</td>
+            <td>
+                <div style="text-align: center;">
+                    <span style="display: block;">17.10.15</span>
+                    <span style="display: block;">12 Des 2024</span>
+                </div>
+            </td>
+            <td>
+                <div style="text-align: center;">
+                    <span style="display: block;">17.10.15</span>
+                    <span style="display: block;">12 Des 2024</span>
+                </div>
+            </td>
             <td>Ditolak</td>
         </tr>
         <tr>
             <td>4</td>
             <td>TXR-20241212-001</td>
             <td>Budi Hadi</td>
-            <td>TVRI Aceh</td>
-            <td>Siaran</td>
-            <td>ILM</td>
+            <td>Talkshow Sore Hari</td>
+            <td>TVRI Nasional</td>
+            <td>Iklan Komersial</td>
             <td>Reguler 5 Detik</td>
-            <td>17.10.15</td>
-            <td>12 Des 2024</td>
+            <td>
+                <div style="text-align: center;">
+                    <span style="display: block;">17.10.15</span>
+                    <span style="display: block;">12 Des 2024</span>
+                </div>
+            </td>
+            <td>
+                <div style="text-align: center;">
+                    <span style="display: block;">17.10.15</span>
+                    <span style="display: block;">12 Des 2024</span>
+                </div>
+            </td>
             <td>Dibatalkan</td>
         </tr>
         <tr>
-            <td>5</td>
+            <td></td>
             <td>TXR-20241212-001</td>
             <td>Budi Hadi</td>
-            <td>TVRI Aceh</td>
-            <td>Siaran</td>
-            <td>ILM</td>
-            <td>Reguler 5 Detik</td>
-            <td>17.10.15</td>
-            <td>12 Des 2024</td>
+            <td>Talkshow Sore Hari</td>
+            <td>TVRI Nasional</td>
+            <td>Penyiaran Program</td>
+            <td>60 Menit/Episode</td>
+            <td>
+                <div style="text-align: center;">
+                    <span style="display: block;">17.10.15</span>
+                    <span style="display: block;">12 Des 2024</span>
+                </div>
+            </td>
+            <td>
+                <div style="text-align: center;">
+                    <span style="display: block;">17.10.15</span>
+                    <span style="display: block;">12 Des 2024</span>
+                </div>
+            </td>
             <td>Selesai</td>
         </tr>
     </tbody>
 </table>
 
-            </tbody>
-        </table>
+
 
         
         <div class="pagination-container d-flex justify-content-between align-items-center mt-2">

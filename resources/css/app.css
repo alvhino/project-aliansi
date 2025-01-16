@@ -25,6 +25,8 @@ body {
 
 .breadcrumb a:hover {
     text-decoration: underline;
+<<<<<<< HEAD
+=======
 }
 
 /* Dropdown Button */
@@ -82,4 +84,5 @@ body {
     background-color: #f1f1f1;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     color: #0B8F51;
+>>>>>>> 2bae6593b92a2ca75383e70d5ca220126072bb62
 }

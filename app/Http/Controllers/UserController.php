@@ -31,21 +31,20 @@ class UserController extends Controller
     // Menambah pengguna baru
     public function store(Request $request) 
     { 
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username',
+            'email' => 'required|email|unique:users,email',
+            'telepon' => 'nullable|string|max:15',
+            'foto_profile' => 'nullable|image|max:2048',
+            'role_id' => 'required|exists:roles,id',
+            'status' => 'required|in:aktif,nonaktif',
+        ]);
     
+        $fotoProfilePath = null;
+
         if ($request->hasFile('foto_profile')) {
-            $file = $request->file('foto_profile');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-    
-            // Pastikan direktori ada
-            if (!file_exists(public_path('foto_profile'))) {
-                mkdir(public_path('foto_profile'), 0777, true);
-            }
-    
-            // Simpan file ke public/foto_profile
-            $file->move(public_path('foto_profile'), $fileName);
-    
-            // Simpan path relatif ke database
-            $fotoProfilePath = 'foto_profile/' . $fileName;
+            $fotoProfilePath = $request->file('foto_profile')->store('foto_profile', 'public');
         }
     
         User::create([ 
@@ -60,14 +59,21 @@ class UserController extends Controller
     
         return redirect()->back()->with('success', 'Pengguna berhasil ditambahkan.'); 
     }
-    
 
     // Update pengguna yang ada
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
 
-       
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username,' . $id,
+            'email' => 'required|email|unique:users,email,' . $id,
+            'telepon' => 'nullable|string|max:15',
+            'foto_profile' => 'nullable|image|max:2048',
+            'role_id' => 'required|exists:roles,id',
+            'status' => 'required|in:aktif,nonaktif',
+        ]);
 
         // Update foto_profile jika ada file baru
         if ($request->hasFile('foto_profile')) {
