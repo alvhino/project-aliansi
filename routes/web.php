@@ -87,3 +87,11 @@ Route::get('/kerjasama-nasional', [KerjasamaNasionalController::class, 'index'])
 Route::post('/kerjasama-nasional/add', [KerjasamaNasionalController::class, 'store']);
 Route::post('/kerjasama-nasional/update/{id}', [KerjasamaNasionalController::class, 'update']);
 Route::post('/kerjasama-nasional/delete/{id}', [KerjasamaNasionalController::class, 'destroy']);
+
+
+// Routes untuk Kerjasama Daerah
+Route::get('/kerja-sama-daerah', [KerjaSamaDaerahController::class, 'index']);
+Route::post('/kerja-sama-daerah/add', [KerjaSamaDaerahController::class, 'store']);
+Route::get('/kerja-sama-daerah/edit/{daerah_id}', [KerjaSamaDaerahController::class, 'edit']);
+Route::post('/kerja-sama-daerah/update/{daerah_id}', [KerjaSamaDaerahController::class, 'update']);
+Route::get('/kerja-sama-daerah/delete/{daerah_id}', [KerjaSamaDaerahController::class, 'destroy']);
