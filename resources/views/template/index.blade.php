@@ -206,7 +206,7 @@
 
 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
   <img src="assets/img/2.png" alt="Profile" class="rounded-circle">
-  <span class="d-none d-md-block dropdown-toggle ps-2">username</span>
+  <span class="d-none d-md-block ps-2">username</span>
 </a><!-- End Profile Image Icon -->
 </ul><!-- End Profile Dropdown Items -->
 
@@ -229,30 +229,12 @@
     <span>Dashboard</span>
   </a>
 </li><!-- End Dashboard Nav -->
-
-<!-- Niko: Tabel Kategori Acara -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('/kategori-acara') }}">
-    <i class="bi bi-list"></i>
-    <span>Kategori Acara</span>
+  <a class="nav-link" href="{{ url('/dashboard') }}">
+    <i class=""></i>
+    <span>Master</span>
   </a>
-</li>
-
-<!-- Ello: Umpan Balik -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/feedback') }}">
-    <i class="bi bi-chat-left-text"></i>
-    <span>Feedback</span>
-  </a>
-</li>
-
-<!-- Gian: Role -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/role') }}">
-    <i class="bi bi-key"></i>
-    <span>Role</span>
-  </a>
-</li>
+</li><!-- End Dashboard Nav -->
 
 <!-- Alvin: Wilayah Stasiun -->
 <li class="nav-item">
@@ -262,7 +244,30 @@
   </a>
 </li>
 
+<!-- Niko: Tabel Kategori Acara -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/kategori-acara') }}">
+    <i class="bi bi-list"></i>
+    <span>Kategori Acara</span>
+  </a>
+</li>
 
+
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/kategori-acara') }}">
+    <i class="bi bi-list"></i>
+    <span>Stasiun TVTI</span>
+  </a>
+</li>
+
+
+<!-- Gian: Role -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/role') }}">
+    <i class="bi bi-key"></i>
+    <span>Role</span>
+  </a>
+</li>
 
 <!-- Axell: List Kerja Sama -->
 <li class="nav-item">
@@ -312,10 +317,18 @@
   </a>
 </li>
 
-</ul>
-  </aside><!-- End Sidebar-->
+<!-- Ello: Umpan Balik -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/feedback') }}">
+    <i class="bi bi-chat-left-text"></i>
+    <span>Umpan Balik</span>
+  </a>
+</li>
 
-  <main id="main" class="main">
+</ul>
+</aside><!-- End Sidebar-->
+
+<main id="main" class="main">
 
   @yield('content')
 
