@@ -229,6 +229,7 @@
     <span>Dashboard</span>
   </a>
 </li><!-- End Dashboard Nav -->
+
 <li class="nav-item">
   <a class="nav-link" href="{{ url('/dashboard') }}">
     <i class=""></i>
@@ -265,7 +266,47 @@
 <li class="nav-item">
   <a class="nav-link" href="{{ url('/role') }}">
     <i class="bi bi-key"></i>
-    <span>Role</span>
+    <span>Hak Akses</span>
+  </a>
+</li>
+
+<!-- Pian: Pengguna -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/user') }}">
+    <i class="bi bi-person"></i>
+    <span>Pengguna</span>
+  </a>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/dashboard') }}">
+    <i class=""></i>
+    <span>Kerjasama</span>
+  </a>
+</li>
+
+<!-- Ello Voldigoad: Kerja Sama Nasional -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/kerjasama-nasional') }}">
+    <i class="bi bi-check-circle"></i>
+    <span>Kerjasama Nasional</span>
+  </a>
+</li>
+
+<!-- Aksa: Kerja Sama Daerah -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/kerja-sama-daerah') }}">
+    <i class="bi bi-check-circle"></i>
+    <span>Kerjasama Daerah</span>
+  </a>
+</li>
+
+
+<!-- Aksa: Approval Kerja Sama -->
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('/approval-kerja-sama') }}">
+    <i class="bi bi-check-circle"></i>
+    <span>Approval Kerja Sama</span>
   </a>
 </li>
 
@@ -282,38 +323,6 @@
   <a class="nav-link" href="{{ url('/riwayat') }}">
     <i class="bi bi-clock-history"></i>
     <span>Riwayat</span>
-  </a>
-</li>
-
-<!-- Pian: Pengguna -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/user') }}">
-    <i class="bi bi-person"></i>
-    <span>User</span>
-  </a>
-</li>
-
-<!-- Aksa: Approval Kerja Sama -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/approval-kerja-sama') }}">
-    <i class="bi bi-check-circle"></i>
-    <span>Approval Kerja Sama</span>
-  </a>
-</li>
-
-<!-- Aksa: Kerja Sama Daerah -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/kerja-sama-daerah') }}">
-    <i class="bi bi-check-circle"></i>
-    <span>Kerjasama Daerah</span>
-  </a>
-</li>
-
-<!-- Ello Voldigoad: Kerja Sama Nasional -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/kerjasama-nasional') }}">
-    <i class="bi bi-check-circle"></i>
-    <span>Kerjasama Nasional</span>
   </a>
 </li>
 
