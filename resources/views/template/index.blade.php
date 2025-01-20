@@ -222,120 +222,92 @@
   <aside id="sidebar" class="sidebar">
   <ul class="sidebar-nav" id="sidebar-nav">
 
-<!-- Dashboard -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/dashboard') }}">
-    <i class="bi bi-grid"></i>
-    <span>Dashboard</span>
-  </a>
-</li><!-- End Dashboard Nav -->
+    <!-- Dashboard -->
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url('/dashboard') }}">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li><!-- End Dashboard Nav -->
 
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/dashboard') }}">
-    <i class=""></i>
-    <span>Master</span>
-  </a>
-</li><!-- End Dashboard Nav -->
+    <!-- Master Dropdown -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#master-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-database"></i>
+        <span>Master</span>
+        <i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="master-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="{{ url('/wilayah') }}">
+            <i class="bi bi-geo-alt"></i><span>Wilayah Stasiun</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url('/kategori-acara') }}">
+            <i class="bi bi-list"></i><span>Kategori Acara</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url('/role') }}">
+            <i class="bi bi-key"></i><span>Hak Akses</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url('/user') }}">
+            <i class="bi bi-person"></i><span>Pengguna</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Master Dropdown -->
 
-<!-- Alvin: Wilayah Stasiun -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/wilayah') }}">
-    <i class="bi bi-geo-alt"></i>
-    <span>Wilayah Stasiun</span>
-  </a>
-</li>
+    <!-- Kerjasama Dropdown -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#kerjasama-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-handshake"></i>
+        <span>Kerjasama</span>
+        <i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="kerjasama-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="{{ url('/kerjasama-nasional') }}">
+            <i class="bi bi-check-circle"></i><span>Kerjasama Nasional</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url('/kerja-sama-daerah') }}">
+            <i class="bi bi-check-circle"></i><span>Kerjasama Daerah</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url('/approval-kerja-sama') }}">
+            <i class="bi bi-check-circle"></i><span>Approval Kerja Sama</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url('/list-kerja-sama') }}">
+            <i class="bi bi-briefcase"></i><span>List Kerja Sama</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url('/riwayat') }}">
+            <i class="bi bi-clock-history"></i><span>Riwayat</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Kerjasama Dropdown -->
 
-<!-- Niko: Tabel Kategori Acara -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/kategori-acara') }}">
-    <i class="bi bi-list"></i>
-    <span>Kategori Acara</span>
-  </a>
-</li>
+    <!-- Umpan Balik -->
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url('/feedback') }}">
+        <i class="bi bi-chat-left-text"></i>
+        <span>Umpan Balik</span>
+      </a>
+    </li><!-- End Umpan Balik Nav -->
 
-
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/kategori-acara') }}">
-    <i class="bi bi-list"></i>
-    <span>Stasiun TVTI</span>
-  </a>
-</li>
-
-
-<!-- Gian: Role -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/role') }}">
-    <i class="bi bi-key"></i>
-    <span>Hak Akses</span>
-  </a>
-</li>
-
-<!-- Pian: Pengguna -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/user') }}">
-    <i class="bi bi-person"></i>
-    <span>Pengguna</span>
-  </a>
-</li>
-
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/dashboard') }}">
-    <i class=""></i>
-    <span>Kerjasama</span>
-  </a>
-</li>
-
-<!-- Ello Voldigoad: Kerja Sama Nasional -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/kerjasama-nasional') }}">
-    <i class="bi bi-check-circle"></i>
-    <span>Kerjasama Nasional</span>
-  </a>
-</li>
-
-<!-- Aksa: Kerja Sama Daerah -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/kerja-sama-daerah') }}">
-    <i class="bi bi-check-circle"></i>
-    <span>Kerjasama Daerah</span>
-  </a>
-</li>
-
-
-<!-- Aksa: Approval Kerja Sama -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/approval-kerja-sama') }}">
-    <i class="bi bi-check-circle"></i>
-    <span>Approval Kerja Sama</span>
-  </a>
-</li>
-
-<!-- Axell: List Kerja Sama -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/list-kerja-sama') }}">
-    <i class="bi bi-briefcase"></i>
-    <span>List Kerja Sama</span>
-  </a>
-</li>
-
-<!-- Praya: Riwayat -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/riwayat') }}">
-    <i class="bi bi-clock-history"></i>
-    <span>Riwayat</span>
-  </a>
-</li>
-
-<!-- Ello: Umpan Balik -->
-<li class="nav-item">
-  <a class="nav-link" href="{{ url('/feedback') }}">
-    <i class="bi bi-chat-left-text"></i>
-    <span>Umpan Balik</span>
-  </a>
-</li>
-
-</ul>
-</aside><!-- End Sidebar-->
+  </ul>
+</aside>
+<!-- End Sidebar-->
 
 <main id="main" class="main">
 
